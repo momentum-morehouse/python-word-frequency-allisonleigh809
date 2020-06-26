@@ -5,7 +5,7 @@ frequency = {}
 print("Word frequency for 'Real Love' by Mary J. Blige: ")
 document_text = open('real_love.txt', 'r')
 text_string = document_text.read().lower()
-match_pattern = re.findall(r'\b[a-z]{3,15}\b', text_string)
+match_pattern = re.findall(r'\b[a-z]{1,15}\b', text_string)
 
 for word in match_pattern:
     count = frequency.get(word,0)
@@ -16,8 +16,12 @@ frequency_list = frequency.keys()
 for words in frequency_list:
     print(words, frequency[words])
 
-    
-
+def remove_punctuation(text):
+    result = []
+    for char in text:
+        if char not in string.punctuation:
+            result.append(char)
+    return "".join(result)
 
 
 
